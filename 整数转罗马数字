@@ -1,0 +1,77 @@
+var intToRoman = function(num) {
+    let divisor = 0, remainder = 0, str = '';
+    // M,1000
+    divisor = Math.floor(num / 1000);
+    remainder = num % 1000;
+    while(divisor){
+        str += 'M';
+        divisor--;
+    }
+    if(remainder >= 900){
+        str += 'CM';
+        remainder -= 900;
+    }
+    // D,500
+    divisor = Math.floor(remainder / 500);
+    remainder = remainder % 500;
+    while(divisor){
+        str += 'D';
+        divisor--;
+    }
+    if(remainder >= 400){
+        str += 'CD';
+        remainder -= 400;
+    }
+    // C,100
+    divisor = Math.floor(remainder / 100);
+    remainder = remainder % 100;
+    while(divisor){
+        str += 'C';
+        divisor--;
+    }
+    if(remainder >= 90){
+        str += 'XC';
+        remainder -= 90;
+    }
+    // L,50
+    divisor = Math.floor(remainder / 50);
+    remainder = remainder % 50;
+    while(divisor){
+        str += 'L';
+        divisor--;
+    }
+    if(remainder >= 40){
+        str += 'XL';
+        remainder -= 40;
+    }
+    // X,10
+    divisor = Math.floor(remainder / 10);
+    remainder = remainder % 10;
+    while(divisor){
+        str += 'X';
+        divisor--;
+    }
+    if(remainder >= 9){
+        str += 'IX';
+        remainder -= 9;
+    }
+    // V,5
+    divisor = Math.floor(remainder / 5);
+    remainder = remainder % 5;
+    while(divisor){
+        str += 'V';
+        divisor--;
+    }
+    if(remainder >= 4){
+        str += 'IV';
+        remainder -= 4;
+    }
+    // I,1
+    divisor = remainder;
+    while(divisor){
+        str += 'I';
+        divisor--;
+    }
+
+    return str;
+};
