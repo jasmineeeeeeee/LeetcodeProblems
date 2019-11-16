@@ -1,0 +1,33 @@
+var isIsomorphic = function(s, t) {
+  if (s.length !== t.length) {
+    return false
+  }
+  let obj = {}, tobj = {}, len = s.length, str = '', tstr = ''
+  let current = 0, index = 0 // 记录构造
+  for (let i = 0;i < len;i++) {
+    if (obj[s[i]]) {
+      if (tobj[t[i]]) {
+        tstr += tobj[t[i]]
+        str += obj[s[i]]
+      } else {
+        return false
+      }
+    } else {
+      if (!tobj[t[i]]) {
+        current++
+        index++
+        str += current
+        tstr += index
+        obj[s[i]] = current
+        tobj[t[i]] = index
+      } else {
+        return false
+      }
+    }
+  }
+  if (tstr === str) {
+    return true
+  } else {
+    return false
+  }
+};
