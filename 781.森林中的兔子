@@ -1,0 +1,18 @@
+var numRabbits = function(answers) {
+    const temp = {};
+    let result = 0;
+    answers.forEach(num => {
+        if (temp[num]) {
+            temp[num] = temp[num] + 1;    
+        } else {
+            temp[num] = 1;
+        }
+    });
+    
+    for (let num in temp) {
+        result += Math.ceil(temp[num] / (parseInt(num) + 1)) * (parseInt(num) + 1)
+        
+    }
+    
+    return result;
+};
